@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Component;
 import pl.personal.MiFi.monthlybudget.domain.entities.Income;
 import pl.personal.MiFi.monthlybudget.domain.repository.IncomeRepository;
-import pl.personal.MiFi.monthlybudget.domain.services.CashTransferService;
+import pl.personal.MiFi.monthlybudget.domain.services.CashRegisterService;
 
 import java.math.BigDecimal;
 
@@ -14,13 +14,13 @@ import java.math.BigDecimal;
 @Component
 public class MiFiApplication implements CommandLineRunner {
 
-	private final CashTransferService cashTransferService;
+	private final CashRegisterService cashRegisterService;
 
 	private IncomeRepository incomeRepository;
 
 	public MiFiApplication(IncomeRepository incomeRepository) {
 		this.incomeRepository = incomeRepository;
-		this.cashTransferService = new CashTransferService(incomeRepository);
+		this.cashRegisterService = new CashRegisterService(incomeRepository);
     }
 
 	public static void main(String[] args) {
@@ -31,6 +31,6 @@ public class MiFiApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		Income income = Income.from("Salary").of(new BigDecimal(1000));
-		cashTransferService.saveIncome(income);
+		cashRegisterService.saveIncome(income);
 	}
 }
