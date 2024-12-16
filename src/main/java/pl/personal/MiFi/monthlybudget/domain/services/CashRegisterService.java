@@ -1,17 +1,17 @@
 package pl.personal.MiFi.monthlybudget.domain.services;
 
-import pl.personal.MiFi.monthlybudget.domain.entities.Income;
-import pl.personal.MiFi.monthlybudget.domain.repository.IncomeRepository;
+import pl.personal.MiFi.monthlybudget.domain.entities.Operation;
+import pl.personal.MiFi.monthlybudget.domain.repository.OperationRepository;
 
 public class CashRegisterService {
 
-    private final IncomeRepository incomeRepository;
+    private final OperationRepository operationRepository;
 
-    public CashRegisterService(IncomeRepository incomeRepository) {
-        this.incomeRepository = incomeRepository;
+    public CashRegisterService(OperationRepository operationRepository) {
+        this.operationRepository = operationRepository;
     }
 
-    public void saveIncome(Income income){
-        incomeRepository.saveIncome(income);
+    public void saveIncome(Operation operation){
+        operationRepository.saveOperation(operation);
     }
 }

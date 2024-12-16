@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 public class IncomeRequest {
 
     private final String name;
+    private final String type;
     private final BigDecimal amount;
 
 }
